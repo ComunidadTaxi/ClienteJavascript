@@ -1,0 +1,63 @@
+<div class="page-header">
+	<h3>Mis Vehiculos</h3>
+</div>
+
+<p>
+	<a href="#/VehiculosCreate" class="btn btn-info" role="button">Crear Veh&iacute;culo</a>
+</p>
+
+<div ng-show="failure" class="alert alert-danger alert-dismissable">
+	<button type="button" class="close" ng-click="failure = false"
+		aria-hidden="true">&times;</button>
+	Error: {{stacktrace.error.message}}
+</div>
+
+<div id="no-more-tables">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Placa</th>
+				<th>Marca</th>
+				<th>Modelo</th>
+				<th>T. Propiedad</th>
+				<th>SOAT</th>
+				<th>Estado</th>
+				<th>Conductores</th>
+				<th>Deshabilitar</th>
+				<th>Pagar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="vehiculo in vehiculos" ng-class="{'warning':vehiculo.estado=='REGISTRADO','success':vehiculo.estado=='APROBADO'}">
+				<td>{{vehiculo.placa}}</td>
+				<td>{{vehiculo.marca}}</td>
+				<td>{{vehiculo.modelo}}</td>
+				<td><a href="{{vehiculo.documentos[0].webContentLink}}">{{vehiculo.documentos[0].originalFilename}}</td>
+				<td><a href="{{vehiculo.documentos[1].webContentLink}}">{{vehiculo.documentos[1].originalFilename}}</td>
+				<td>{{vehiculo.estado}}</td>
+				<td><a href="#/ConductoresList/{{vehiculo.placa}}">Conductores</a></td>
+				<td><a type="button" class="btn btn-danger">Deshabilitar</a></td>
+				<td>
+				
+<form method="post" action="https://stg.gateway.payulatam.com/ppp-web-gateway/">
+<input name="merchantId"    type="hidden"  value="536087"   >
+<input name="accountId"     type="hidden"  value="536087" >
+<input name="description"   type="hidden"  value="Rodamiento"  >
+<input name="referenceCode" type="hidden"  value="JUNIO2015" >
+<input name="amount"        type="hidden"  value="45000"   >
+<input name="tax"           type="hidden"  value="0"  >
+<input name="taxReturnBase" type="hidden"  value="0" >
+<input name="currency"      type="hidden"  value="COP" >
+<input name="signature"     type="hidden"  value="85d442c7fdf801d649deeff57811a093"  >
+<input name="test"          type="hidden"  value="1" >
+<input name="buyerEmail"    type="hidden"  value="test@test.com" >
+<input name="responseUrl"    type="hidden"  value="https://definitaxi.appspot.com/PayUResponse" >
+<input name="confirmationUrl"    type="hidden"  value="https://definitaxi.appspot.com/PayUConfirmation" >
+<input name="Submit"        type="submit"  value="Pagar" >
+</form>
+				
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

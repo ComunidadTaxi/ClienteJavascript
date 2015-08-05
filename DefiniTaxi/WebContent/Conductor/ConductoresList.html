@@ -1,0 +1,30 @@
+<div class="page-header">
+	<h3>Mis tarjetas de control</h3>
+</div>
+
+<div id="no-more-tables">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Placa</th>
+				<th>Cedula</th>
+				<th>Nombre</th>
+				<th>Licencia</th>
+				<th>Cedula</th>
+				<th>Estado</th>
+				<th>Diligenciar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="conductor in conductores" ng-class="{'warning':conductor.estado=='REGISTRADO','success':conductor.estado=='APROBADO'}">
+				<td>{{conductor.placa}}</td>
+				<td>{{conductor.cedula}}</td>
+				<td>{{conductor.nombre}}</td>
+				<td><a href="{{conductor.documentos[0].webContentLink}}">{{conductor.documentos[0].originalFilename}}</td>
+				<td><a href="{{conductor.documentos[1].webContentLink}}">{{conductor.documentos[1].originalFilename}}</td>
+				<td>{{conductor.estado}}</td>
+				<td><a href="#/VehiculoConductorUpdate/{{conductor.id}}" type="button" class="btn btn-danger">Diligenciar</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

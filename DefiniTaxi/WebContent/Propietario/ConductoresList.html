@@ -1,0 +1,40 @@
+<div class="page-header">
+	<h3>Conductores del veh&iacute;culo {{placa}}</h3>
+</div>
+
+<p>
+	<a href="#/ConductoresCreate/{{placa}}" class="btn btn-info" role="button">Agregar conductor</a>
+</p>
+
+<div ng-show="failure" class="alert alert-danger alert-dismissable">
+	<button type="button" class="close" ng-click="failure = false"
+		aria-hidden="true">&times;</button>
+	Error: {{stacktrace.error.message}}
+</div>
+
+<div id="no-more-tables">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Placa</th>
+				<th>Cedula</th>
+				<th>Nombre</th>
+				<th>Licencia</th>
+				<th>Cedula</th>
+				<th>Estado</th>
+				<th>Deshabilitar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="conductor in conductores" ng-class="{'warning':conductor.estado=='REGISTRADO','success':conductor.estado=='APROBADO'}">
+				<td>{{conductor.placa}}</td>
+				<td>{{conductor.cedula}}</td>
+				<td>{{conductor.nombre}}</td>
+				<td><a href="{{conductor.documentos[0].webContentLink}}">{{conductor.documentos[0].originalFilename}}</td>
+				<td><a href="{{conductor.documentos[1].webContentLink}}">{{conductor.documentos[1].originalFilename}}</td>
+				<td>{{conductor.estado}}</td>
+				<td><a type="button" class="btn btn-danger">Deshabilitar</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,295 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/dZdq5reeo3_y_R4i4ADNkIhtfAQ\"",
+ "discoveryVersion": "v1",
+ "id": "vehiculoendpoint:v1",
+ "name": "vehiculoendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://taxicab-995.appspot.com/_ah/api/vehiculoendpoint/v1/",
+ "basePath": "/_ah/api/vehiculoendpoint/v1/",
+ "rootUrl": "https://taxicab-995.appspot.com/_ah/api/",
+ "servicePath": "vehiculoendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_Vehiculo": {
+   "id": "CollectionResponse_Vehiculo",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Vehiculo"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "Documento": {
+   "id": "Documento",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "idDocumento": {
+     "type": "string"
+    },
+    "key": {
+     "$ref": "Key"
+    },
+    "originalFilename": {
+     "type": "string"
+    },
+    "webContentLink": {
+     "type": "string"
+    }
+   }
+  },
+  "Key": {
+   "id": "Key",
+   "type": "object",
+   "properties": {
+    "appId": {
+     "type": "string"
+    },
+    "complete": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
+    }
+   }
+  },
+  "Vehiculo": {
+   "id": "Vehiculo",
+   "type": "object",
+   "properties": {
+    "documentos": {
+     "type": "array",
+     "items": {
+      "$ref": "Documento"
+     }
+    },
+    "estado": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "idPropietario": {
+     "type": "string"
+    },
+    "marca": {
+     "type": "string"
+    },
+    "modelo": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "placa": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getVehiculo": {
+   "id": "vehiculoendpoint.getVehiculo",
+   "path": "vehiculo/{id}",
+   "httpMethod": "GET",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "response": {
+    "$ref": "Vehiculo"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "insertVehiculo": {
+   "id": "vehiculoendpoint.insertVehiculo",
+   "path": "vehiculo",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "Vehiculo",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Vehiculo"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listMisVehiculos": {
+   "id": "vehiculoendpoint.listMisVehiculos",
+   "path": "listmisvehiculos",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "idPropietario": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "idPropietario"
+   ],
+   "response": {
+    "$ref": "CollectionResponse_Vehiculo"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listTodosVehiculos": {
+   "id": "vehiculoendpoint.listTodosVehiculos",
+   "path": "listtodosvehiculos",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "response": {
+    "$ref": "CollectionResponse_Vehiculo"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "toggleVehiculo": {
+   "id": "vehiculoendpoint.toggleVehiculo",
+   "path": "vehiculo/{id}",
+   "httpMethod": "DELETE",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "updateEstadoVehiculo": {
+   "id": "vehiculoendpoint.updateEstadoVehiculo",
+   "path": "updateestadovehiculo",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "Vehiculo",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Vehiculo"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

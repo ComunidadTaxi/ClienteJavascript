@@ -1,0 +1,290 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://taxicab-995.appspot.com/_ah/api",
+  "name" : "vehiculoendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://taxicab-995.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "vehiculoendpoint.getVehiculo" : {
+      "path" : "vehiculo/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.VehiculoEndpoint.getVehiculo",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "vehiculoendpoint.listMisVehiculos" : {
+      "path" : "listmisvehiculos",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.VehiculoEndpoint.listMisVehiculos",
+      "request" : {
+        "parameters" : {
+          "idPropietario" : {
+            "type" : "string",
+            "required" : true
+          },
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "vehiculoendpoint.listTodosVehiculos" : {
+      "path" : "listtodosvehiculos",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.VehiculoEndpoint.listTodosVehiculos",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "vehiculoendpoint.insertVehiculo" : {
+      "path" : "vehiculo",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.VehiculoEndpoint.insertVehiculo",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "vehiculoendpoint.updateEstadoVehiculo" : {
+      "path" : "updateestadovehiculo",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.VehiculoEndpoint.updateEstadoVehiculo",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "vehiculoendpoint.toggleVehiculo" : {
+      "path" : "vehiculo/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.VehiculoEndpoint.removeVehiculo",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Vehiculo" : {
+        "id" : "Vehiculo",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "idPropietario" : {
+            "type" : "string"
+          },
+          "placa" : {
+            "type" : "string"
+          },
+          "marca" : {
+            "type" : "string"
+          },
+          "modelo" : {
+            "type" : "integer"
+          },
+          "documentos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Documento"
+            }
+          },
+          "estado" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Documento" : {
+        "id" : "Documento",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "idDocumento" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "originalFilename" : {
+            "type" : "string"
+          },
+          "webContentLink" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "CollectionResponse_Vehiculo" : {
+        "id" : "CollectionResponse_Vehiculo",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Vehiculo"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.definitaxi.endpoints.VehiculoEndpoint.getVehiculo" : {
+        "response" : {
+          "$ref" : "Vehiculo"
+        }
+      },
+      "com.definitaxi.endpoints.VehiculoEndpoint.listMisVehiculos" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Vehiculo"
+        }
+      },
+      "com.definitaxi.endpoints.VehiculoEndpoint.listTodosVehiculos" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Vehiculo"
+        }
+      },
+      "com.definitaxi.endpoints.VehiculoEndpoint.insertVehiculo" : {
+        "request" : {
+          "$ref" : "Vehiculo"
+        },
+        "response" : {
+          "$ref" : "Vehiculo"
+        }
+      },
+      "com.definitaxi.endpoints.VehiculoEndpoint.updateEstadoVehiculo" : {
+        "request" : {
+          "$ref" : "Vehiculo"
+        },
+        "response" : {
+          "$ref" : "Vehiculo"
+        }
+      },
+      "com.definitaxi.endpoints.VehiculoEndpoint.removeVehiculo" : {
+      }
+    }
+  }
+}

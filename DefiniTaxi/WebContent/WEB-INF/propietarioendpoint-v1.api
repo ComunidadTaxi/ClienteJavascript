@@ -1,0 +1,194 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://taxicab-995.appspot.com/_ah/api",
+  "name" : "propietarioendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://taxicab-995.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "propietarioendpoint.togglePropietario" : {
+      "path" : "propietario/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.PropietarioEndpoint.removePropietario",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "propietarioendpoint.updatePropietario" : {
+      "path" : "propietario",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.PropietarioEndpoint.updatePropietario",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "propietarioendpoint.getPropietario" : {
+      "path" : "propietario/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.PropietarioEndpoint.getPropietario",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "propietarioendpoint.listPropietario" : {
+      "path" : "propietario",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.PropietarioEndpoint.listPropietario",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "propietarioendpoint.insertPropietario" : {
+      "path" : "propietario",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.PropietarioEndpoint.insertPropietario",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Propietario" : {
+        "id" : "Propietario",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "displayName" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "imageUrl" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_Propietario" : {
+        "id" : "CollectionResponse_Propietario",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Propietario"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.definitaxi.endpoints.PropietarioEndpoint.removePropietario" : {
+      },
+      "com.definitaxi.endpoints.PropietarioEndpoint.updatePropietario" : {
+        "request" : {
+          "$ref" : "Propietario"
+        },
+        "response" : {
+          "$ref" : "Propietario"
+        }
+      },
+      "com.definitaxi.endpoints.PropietarioEndpoint.getPropietario" : {
+        "response" : {
+          "$ref" : "Propietario"
+        }
+      },
+      "com.definitaxi.endpoints.PropietarioEndpoint.listPropietario" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Propietario"
+        }
+      },
+      "com.definitaxi.endpoints.PropietarioEndpoint.insertPropietario" : {
+        "request" : {
+          "$ref" : "Propietario"
+        },
+        "response" : {
+          "$ref" : "Propietario"
+        }
+      }
+    }
+  }
+}

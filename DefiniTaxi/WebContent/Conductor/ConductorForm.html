@@ -1,0 +1,64 @@
+
+
+<div class="page-header">
+	<h3>Formulario conductor</h3>
+</div>
+
+<!-- FORM ng-submit="submitForm(formulario.$valid)" -->
+<form name="formulario" method="post" action="conductorController"
+	novalidate>
+	<input type="hidden" name="action">
+
+	<!-- NOMBRE -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.nombre.$invalid }">
+		<label>Nombre: </label> <input type="text" name="nombre"
+			class="form-control" ng-model="conductor.nombre" ng-pattern="/^[A-Z ]{10,}$/" required>
+		<p ng-show="formulario.nombre.$error.required" class="help-block">El
+			nombre es obligatorio.</p>
+			<p ng-show="formulario.nombre.$error.pattern" class="help-block">El nombre acepta mayusculas, minimo 10.</p>
+	</div>
+	
+	<!-- CEDULA -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.cedula.$invalid }">
+		<label>Cedula: </label>
+		
+		<div class="input-group">
+      		<span class="input-group-btn">
+        		<button class="btn btn-default" type="button" id="cedulaPicker">Adjuntar</button>
+      		</span>
+      		<input type="text" name="cedula" class="form-control" ng-model="cedula" required id="cedula" ng-disabled="true">
+    	</div>
+		
+		<p ng-show="formulario.cedula.$error.required" class="help-block">La cedula es obligatoria.</p>
+	</div>
+	
+	<!-- LICENCIA -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.licencia.$invalid }">
+		<label>Licencia de conducci&oacute;n: </label>
+		
+		<div class="input-group">
+      		<span class="input-group-btn">
+        		<button class="btn btn-default" type="button" id="licenciaPicker">Adjuntar</button>
+      		</span>
+      		<input type="text" name="licencia" class="form-control" ng-model="licencia" required id="licencia" ng-disabled="true">
+    	</div>
+		
+		<p ng-show="formulario.licencia.$error.required" class="help-block">La licencia es obligatoria.</p>
+	</div>
+	
+	<div class="alert alert-warning">
+		Al hacer click en el boton 'Guardar' usted
+		esta certificando que toda la informacion contenida en el formulario de registro de conductors es verdadera y correcta.
+		Falsificar informacion puede acarrear consecuencias juridicas.
+		Compruebe que toda la informaci&oacute;n es correcta y est&aacute; completa. 
+	</div>
+
+
+	<button type="button" class="btn btn-info"
+		ng-disabled="formulario.$invalid" ng-click="guardarConductor()">Guardar</button>
+	<a href="#/VehiculosConductorList" class="btn btn-danger" role="button">Cancelar</a>
+
+</form>

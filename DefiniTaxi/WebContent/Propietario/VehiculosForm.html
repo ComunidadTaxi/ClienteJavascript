@@ -1,0 +1,101 @@
+
+
+<div class="page-header">
+	<h3>Formulario Vehiculo</h3>
+</div>
+
+<!-- FORM ng-submit="submitForm(formulario.$valid)" -->
+<form name="formulario" method="post" action="VehiculoController"
+	novalidate>
+	<input type="hidden" name="action">
+	
+	<!-- PLACA -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.placa.$invalid }">
+		<label>Placa: </label> <input type="text" name="placa"
+			class="form-control" ng-model="vehiculo.placa" ng-pattern="/^[A-Z]{3}[0-9]{3}$/" required>
+		<p ng-show="formulario.placa.$error.required" class="help-block">La
+			placa es obligatoria.</p>
+		<p ng-show="formulario.placa.$error.pattern" class="help-block">Placa acepta 3 mayusculas y 3 numeros.</p>
+	</div>
+
+	<!-- MARCA -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.marca.$invalid }">
+		<label>Marca: </label> <input type="text" name="marca"
+			class="form-control" ng-model="vehiculo.marca" ng-pattern="/^[A-Z_]{3,}$/" required>
+		<p ng-show="formulario.marca.$error.required" class="help-block">La
+			marca es obligatoria.</p>
+			<p ng-show="formulario.marca.$error.pattern" class="help-block">Marca acepta mayusculas, minimo 3.</p>
+	</div>
+
+	<!-- MODELO -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.modelo.$invalid }">
+		<label>Modelo: </label> <input type="number" name="modelo"
+			class="form-control" ng-model="vehiculo.modelo" min="1970" max="3000" required>
+		<p ng-show="formulario.modelo.$error.required" class="help-block">El
+			modelo es obligatorio.</p>
+			<p ng-show="formulario.modelo.$error.pattern" class="help-block">Por favor escriba un numero.</p>
+			<p ng-show="formulario.modelo.$error.min || formulario.modelo.$error.max" class="help-block">Modelo acepta numeros, 4 digitos.</p>
+	</div>
+
+	<div ng-show="failure" class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" ng-click="failure = false"
+			aria-hidden="true">&times;</button>
+		Error: {{stacktrace.error.message}}
+	</div>
+	
+	<!-- PROPIEDAD -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.tarjetaPropiedad.$invalid }">
+		<label>Tarjeta de propiedad: </label>
+		
+		<!-- 
+		<input type="text" name="tarjetaPropiedad" class="form-control" ng-model="vehiculo.tarjetaPropiedad" required>
+		 -->
+		
+		<div class="input-group">
+      		<span class="input-group-btn">
+        		<button class="btn btn-default" type="button" id="tarjetaPropiedadPicker">Adjuntar</button>
+      		</span>
+      		<input type="text" name="tarjetaPropiedad" class="form-control" ng-model="tarjetaPropiedad" required id="tarjetaPropiedad" ng-disabled="true">
+    	</div>
+		
+		<p ng-show="formulario.tarjetaPropiedad.$error.required" class="help-block">La tarjeta de propiedad es obligatoria.</p>
+	</div>
+	
+	<!-- SOAT -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.soat.$invalid }">
+		<label>SOAT: </label>
+		
+		<div class="input-group">
+      		<span class="input-group-btn">
+        		<button class="btn btn-default" type="button" id="soatPicker">Adjuntar</button>
+      		</span>
+      		<input type="text" name="soat" class="form-control" ng-model="soat" required id="soat" ng-disabled="true">
+    	</div>
+		
+		<p ng-show="formulario.soat.$error.required" class="help-block">El SOAT es obligatorio.</p>
+	</div>
+	
+	<div class="alert alert-warning">
+		Al hacer click en el boton 'Guardar' usted
+		está certificando que toda la información contenida en el formulario de registro de vehiculos es verdadera y correcta.
+		Falsificar información puede acarrear consecuencias jurídicas.
+		Compruebe que toda la informaci&oacute;n es correcta y est&aacute; completa. 
+	</div>
+
+	<div ng-show="failure" class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" ng-click="failure = false"
+			aria-hidden="true">&times;</button>
+		Error: {{stacktrace.error.message}}
+	</div>
+
+
+	<button type="button" class="btn btn-info"
+		ng-disabled="formulario.$invalid" ng-click="guardarVehiculo()">Guardar</button>
+	<a href="#/VehiculosList" class="btn btn-danger" role="button">Cancelar</a>
+
+</form>

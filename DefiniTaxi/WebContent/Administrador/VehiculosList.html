@@ -1,0 +1,30 @@
+<div class="page-header">
+	<h3>Lista de Vehiculos</h3>
+</div>
+
+<div id="no-more-tables">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Placa</th>
+				<th>Marca</th>
+				<th>Modelo</th>
+				<th>T. Propiedad</th>
+				<th>SOAT</th>
+				<th>Estado</th>
+				<th>Aprobar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="vehiculo in vehiculos" ng-class="{'warning':vehiculo.estado=='REGISTRADO','success':vehiculo.estado=='APROBADO'}">
+				<td>{{vehiculo.placa}}</td>
+				<td>{{vehiculo.marca}}</td>
+				<td>{{vehiculo.modelo}}</td>
+				<td><a href="{{vehiculo.documentos[0].webContentLink}}">{{vehiculo.documentos[0].originalFilename}}</td>
+				<td><a href="{{vehiculo.documentos[1].webContentLink}}">{{vehiculo.documentos[1].originalFilename}}</td>
+				<td>{{vehiculo.estado}}</td>
+				<td><button ng-hide="vehiculo.estado=='APROBADO'" type="button" class="btn btn-danger" ng-click="aprobarVehiculo(vehiculo.id)">Aprobar</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

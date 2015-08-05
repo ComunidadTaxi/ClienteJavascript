@@ -1,0 +1,358 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://taxicab-995.appspot.com/_ah/api",
+  "name" : "conductorendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://taxicab-995.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "conductorendpoint.listConductoresVehiculo" : {
+      "path" : "conductor/{idPropietario}/{placa}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.listConductor",
+      "request" : {
+        "parameters" : {
+          "idPropietario" : {
+            "type" : "string",
+            "required" : true
+          },
+          "placa" : {
+            "type" : "string",
+            "required" : true
+          },
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "conductorendpoint.getConductor" : {
+      "path" : "conductor/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.getConductor",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "conductorendpoint.listTodosConductores" : {
+      "path" : "listtodosconductores",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.listTodosConductores",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "conductorendpoint.toggleConductor" : {
+      "path" : "conductor/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.removeConductor",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "conductorendpoint.updateEstadoConductor" : {
+      "path" : "updateestadoconductor",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.updateEstadoConductor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "conductorendpoint.insertConductor" : {
+      "path" : "conductor",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.insertConductor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "conductorendpoint.updateDocumentosConductor" : {
+      "path" : "updatedocumentosconductor",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.updateConductor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "conductorendpoint.listVehiculosConductor" : {
+      "path" : "listvehiculosconductor",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "1038956616402-vb9iu5569j0i4l3b6ovvs56cfrolh5jm.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.definitaxi.endpoints.ConductorEndpoint.listVehiculosConductor",
+      "request" : {
+        "parameters" : {
+          "email" : {
+            "type" : "string",
+            "required" : true
+          },
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Conductor" : {
+        "id" : "CollectionResponse_Conductor",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Conductor"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Conductor" : {
+        "id" : "Conductor",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "idPropietario" : {
+            "type" : "string"
+          },
+          "placa" : {
+            "type" : "string"
+          },
+          "cedula" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "imageUrl" : {
+            "type" : "string"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "estado" : {
+            "type" : "string"
+          },
+          "documentos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Documento"
+            }
+          }
+        }
+      },
+      "Documento" : {
+        "id" : "Documento",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "idDocumento" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "originalFilename" : {
+            "type" : "string"
+          },
+          "webContentLink" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.definitaxi.endpoints.ConductorEndpoint.listConductor" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Conductor"
+        }
+      },
+      "com.definitaxi.endpoints.ConductorEndpoint.getConductor" : {
+        "response" : {
+          "$ref" : "Conductor"
+        }
+      },
+      "com.definitaxi.endpoints.ConductorEndpoint.listTodosConductores" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Conductor"
+        }
+      },
+      "com.definitaxi.endpoints.ConductorEndpoint.removeConductor" : {
+      },
+      "com.definitaxi.endpoints.ConductorEndpoint.updateEstadoConductor" : {
+        "request" : {
+          "$ref" : "Conductor"
+        },
+        "response" : {
+          "$ref" : "Conductor"
+        }
+      },
+      "com.definitaxi.endpoints.ConductorEndpoint.insertConductor" : {
+        "request" : {
+          "$ref" : "Conductor"
+        },
+        "response" : {
+          "$ref" : "Conductor"
+        }
+      },
+      "com.definitaxi.endpoints.ConductorEndpoint.updateConductor" : {
+        "request" : {
+          "$ref" : "Conductor"
+        },
+        "response" : {
+          "$ref" : "Conductor"
+        }
+      },
+      "com.definitaxi.endpoints.ConductorEndpoint.listVehiculosConductor" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Conductor"
+        }
+      }
+    }
+  }
+}

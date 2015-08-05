@@ -1,0 +1,32 @@
+<div class="page-header">
+	<h3>Lista de conductores</h3>
+</div>
+
+<div id="no-more-tables">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Placa</th>
+				<th>Cedula</th>
+				<th>Nombre</th>
+				<th>Licencia</th>
+				<th>Cedula</th>
+				<th>Fosiga</th>
+				<th>Estado</th>
+				<th>Aprobar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="conductor in conductores" ng-class="{'warning':conductor.estado=='REGISTRADO','success':conductor.estado=='APROBADO'}">
+				<td>{{conductor.placa}}</td>
+				<td>{{conductor.cedula}}</td>
+				<td>{{conductor.nombre}}</td>
+				<td><a href="{{conductor.documentos[0].webContentLink}}">{{conductor.documentos[0].originalFilename}}</a></td>
+				<td><a href="{{conductor.documentos[1].webContentLink}}">{{conductor.documentos[1].originalFilename}}</a></td>
+				<th><a href="http://www.fosyga.gov.co/Aplicaciones/AfiliadoWebBDUA/Afiliado/Formulario/buda_consulta_afil_sin_dnn.aspx?id={{conductor.cedula}}&tipodocumento=CC">Fosiga</a></th>
+				<td>{{conductor.estado}}</td>
+				<td><button ng-hide="conductor.estado=='APROBADO'" type="button" class="btn btn-danger" ng-click="aprobarConductor(conductor.id)">Aprobar</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

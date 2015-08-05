@@ -1,0 +1,351 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/LxX8skuCbzdxBYLFKwxdgYNqhpQ\"",
+ "discoveryVersion": "v1",
+ "id": "conductorendpoint:v1",
+ "name": "conductorendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://taxicab-995.appspot.com/_ah/api/conductorendpoint/v1/",
+ "basePath": "/_ah/api/conductorendpoint/v1/",
+ "rootUrl": "https://taxicab-995.appspot.com/_ah/api/",
+ "servicePath": "conductorendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_Conductor": {
+   "id": "CollectionResponse_Conductor",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Conductor"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "Conductor": {
+   "id": "Conductor",
+   "type": "object",
+   "properties": {
+    "cedula": {
+     "type": "string"
+    },
+    "documentos": {
+     "type": "array",
+     "items": {
+      "$ref": "Documento"
+     }
+    },
+    "email": {
+     "type": "string"
+    },
+    "estado": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "idPropietario": {
+     "type": "string"
+    },
+    "imageUrl": {
+     "type": "string"
+    },
+    "nombre": {
+     "type": "string"
+    },
+    "placa": {
+     "type": "string"
+    }
+   }
+  },
+  "Documento": {
+   "id": "Documento",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "idDocumento": {
+     "type": "string"
+    },
+    "key": {
+     "$ref": "Key"
+    },
+    "originalFilename": {
+     "type": "string"
+    },
+    "webContentLink": {
+     "type": "string"
+    }
+   }
+  },
+  "Key": {
+   "id": "Key",
+   "type": "object",
+   "properties": {
+    "appId": {
+     "type": "string"
+    },
+    "complete": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getConductor": {
+   "id": "conductorendpoint.getConductor",
+   "path": "conductor/{id}",
+   "httpMethod": "GET",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "response": {
+    "$ref": "Conductor"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "insertConductor": {
+   "id": "conductorendpoint.insertConductor",
+   "path": "conductor",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "Conductor",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Conductor"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listConductoresVehiculo": {
+   "id": "conductorendpoint.listConductoresVehiculo",
+   "path": "conductor/{idPropietario}/{placa}",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "idPropietario": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    },
+    "placa": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "idPropietario",
+    "placa"
+   ],
+   "response": {
+    "$ref": "CollectionResponse_Conductor"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listTodosConductores": {
+   "id": "conductorendpoint.listTodosConductores",
+   "path": "listtodosconductores",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "response": {
+    "$ref": "CollectionResponse_Conductor"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listVehiculosConductor": {
+   "id": "conductorendpoint.listVehiculosConductor",
+   "path": "listvehiculosconductor",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "email"
+   ],
+   "response": {
+    "$ref": "CollectionResponse_Conductor"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "toggleConductor": {
+   "id": "conductorendpoint.toggleConductor",
+   "path": "conductor/{id}",
+   "httpMethod": "DELETE",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "updateDocumentosConductor": {
+   "id": "conductorendpoint.updateDocumentosConductor",
+   "path": "updatedocumentosconductor",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "Conductor",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Conductor"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "updateEstadoConductor": {
+   "id": "conductorendpoint.updateEstadoConductor",
+   "path": "updateestadoconductor",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "Conductor",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Conductor"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

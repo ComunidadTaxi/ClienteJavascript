@@ -1,0 +1,31 @@
+
+
+<div class="page-header">
+	<h3>Nuevo conductor del veh&iacute;culo {{placa}}</h3>
+</div>
+
+<!-- FORM ng-submit="submitForm(formulario.$valid)" -->
+<form name="formulario" method="post" action="VehiculoController" novalidate>
+	
+	<!-- EMAIL -->
+	<div class="form-group"
+		ng-class="{ 'has-error' : formulario.email.$invalid }">
+		<label>Email: </label> <input type="email" name="email"
+			class="form-control" ng-model="conductor.email" required>
+		<p ng-show="formulario.email.$error.required" class="help-block">El
+			email es obligatorio.</p>
+	</div>
+
+	<!--CEDULA -->
+	<div class="form-group" ng-class="{ 'has-error' : formulario.cedula.$invalid }">
+		<label>Cedula: </label> <input type="text" name="cedula"
+			class="form-control" ng-model="conductor.cedula" required>
+		<p ng-show="formulario.cedula.$error.required" class="help-block">La cedula es obligatoria.</p>
+	</div>
+
+
+	<button type="button" class="btn btn-info"
+		ng-disabled="formulario.$invalid" ng-click="guardarConductor()">Guardar</button>
+	<a href="#/ConductoresList/{{placa}}" class="btn btn-danger" role="button">Cancelar</a>
+
+</form>

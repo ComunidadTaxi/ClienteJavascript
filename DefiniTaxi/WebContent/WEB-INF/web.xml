@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>TarjetaControl</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>PayU Confirmation</description>
+    <display-name>PayUConfirmation</display-name>
+    <servlet-name>PayUConfirmation</servlet-name>
+    <servlet-class>com.definitaxi.PayUConfirmation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayUConfirmation</servlet-name>
+    <url-pattern>/PayUConfirmation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PayUResponse</display-name>
+    <servlet-name>PayUResponse</servlet-name>
+    <servlet-class>com.definitaxi.PayUResponse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayUResponse</servlet-name>
+    <url-pattern>/PayUResponse</url-pattern>
+  </servlet-mapping>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>FUEC-HTTPS</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <servlet>
+    <servlet-name>SystemServiceServlet</servlet-name>
+    <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+    <init-param>
+      <param-name>services</param-name>
+      <param-value>com.definitaxi.endpoints.ConductorEndpoint,com.definitaxi.endpoints.PropietarioEndpoint,com.definitaxi.endpoints.VehiculoEndpoint</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SystemServiceServlet</servlet-name>
+    <url-pattern>/_ah/spi/*</url-pattern>
+  </servlet-mapping>
+</web-app>
