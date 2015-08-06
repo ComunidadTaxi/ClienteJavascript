@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="col-sm-6 col-sm-offset-3">
+		<form name="formulario">
+
+			<h2 class="text-center form-signin-heading">Registrar conductor</h2>
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.email.$invalid }">
+				<label class="col-md-4 control-label" for="soat">Email: </label>
+				<div class="col-md-8">
+						<input id="email" type="email" name="email" class="form-control"
+						ng-model="item.email" required>
+				</div>
+			</div>
+					
+
+			<button type="button" class="btn btn-info"
+				ng-disabled="formulario.$invalid" ng-click="saveItem()">Guardar</button>
+			<a href="#/ListConductor" class="btn btn-danger" role="button">Cancelar</a>
+
+		</form>
+	</div>
+</div>

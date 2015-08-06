@@ -1,0 +1,38 @@
+<div class="container-fluid" style="background-color: #7F1637">
+		<div class="col-sm-6 col-sm-offset-3">
+			
+			<form class="form-horizontal" name="formulario">
+				<h2 class="text-center form-signin-heading" style="color:#ffffff">RedAmarilla - Usuario</h2>
+				
+				<div class="form-group row" ng-class="{ 'alert alert-warning has-error' : formulario.placa.$invalid }">
+					<label class="col-md-3 control-label" for="placa" >Placa: </label>
+					<div class="col-md-6">
+					<input
+					id="placa"
+					type="text"
+					name="placa"
+					class="form-control"
+					ng-model="agente.placa"
+					placeholder="ABC123"
+					ng-pattern="/^[A-Z]{3}[0-9]{3}$/"
+					required
+					autofocus>
+					</div>
+					<span class="col-md-3 help-block" ng-show="formulario.placa.$invalid">
+						Obligatorio
+					</span>
+				</div>
+				
+				<div class="text-center">
+				<button type="button" class="btn btn-lg btn-danger" ng-disabled="formulario.$invalid" ng-click="onLogin()">
+					Consultar
+				</button>
+				</div>
+				
+				<div class="alert alert-warning text-center" ng-show="loginError">
+					{{loginError}}
+				</div>
+
+			</form>
+	</div>
+</div>

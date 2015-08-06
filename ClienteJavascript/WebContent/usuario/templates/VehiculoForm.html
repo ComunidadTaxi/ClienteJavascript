@@ -1,0 +1,165 @@
+<div class="container">
+	<div class="col-sm-6 col-sm-offset-3">
+		<form name="formulario">
+
+			<h2 class="text-center form-signin-heading">Registrar vehiculo</h2>
+			
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.placa.$invalid }">
+				<label class="col-md-4 control-label" for="soat">Placa: </label>
+				<div class="col-md-8">
+						<input id="placa" type="text" name="placa" class="form-control"
+						ng-model="item.placa" ng-pattern="/^[A-Z]{3}[0-9]{3}$/" required>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-class="{ 'alert alert-danger has-error' : formulario.marca.$invalid }">
+				<label class="col-md-4 control-label" for="marca">Marca: </label>
+				<div class="col-md-8">
+						<input id="placa" type="text" name="marca" class="form-control"
+						ng-model="item.marca" required>
+				</div>
+			</div>
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.modelo.$invalid }">
+				<label class="col-md-4 control-label" for="modelo">Modelo: </label>
+				<div class="col-md-8">
+						<input id="modelo" type="number" name="modelo" class="form-control"
+						ng-model="item.modelo" required>
+				</div>
+			</div>
+			
+
+			<!-- ********************************************** -->
+			<!-- SOAT  -->
+			<!-- ********************************************** -->
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.soat.$invalid }">
+				<label class="col-md-4 control-label" for="soat">SOAT: </label>
+				<div class="col-md-8">
+					<p class="input-group">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="soatPicker">
+								<i class="glyphicon glyphicon-floppy-disk"></i>
+							</button>
+						</span>
+						<input id="soat" type="text" name="soat" class="form-control"
+						ng-model="item.soat.originalFilename" ng-disabled="true" required>
+					</p>
+				</div>
+			</div>
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.vencimientoSoat.$invalid }">
+				<label class="col-md-4 control-label" for="soat">Vencimiento SOAT: </label>
+				<div class="col-md-8">
+					<p class="input-group">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="openCalendar($event, 'vencimientoSoatOpened')">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+						</span>
+						<input type="text" class="form-control" name="vencimientoSoat"
+						datepicker-popup="{{format}}" ng-model="item.vencimientoSoat"
+						is-open="vencimientoSoatOpened" ng-required="true"
+						ng-disabled="true" required />
+					</p>
+				</div>
+			</div>
+			
+			
+
+			<!-- ********************************************** -->
+			<!-- REVISION TECNICO MECANICA -->
+			<!-- ********************************************** -->
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.revision.$invalid }">
+				<label class="col-md-4 control-label" for="revision">Revision Tecnico-Mecanica: </label>
+				<div class="col-md-8">
+					<p class="input-group">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="revisionPicker">
+								<i class="glyphicon glyphicon-floppy-disk"></i>
+							</button>
+						</span>
+						<input id="revision" type="text" name="revision" class="form-control"
+						ng-model="item.revision.originalFilename" ng-disabled="true" required>
+					</p>
+				</div>
+			</div>
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.vencimientoRevision.$invalid }">
+				<label class="col-md-4 control-label" for="soat">Vencimiento Revision: </label>
+				<div class="col-md-8">
+					<p class="input-group">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="openCalendar($event, 'vencimientoRevisionOpened')">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+						</span>
+						<input type="text" class="form-control" name="vencimientoRevision"
+						datepicker-popup="{{format}}" ng-model="item.vencimientoRevision"
+						is-open="vencimientoRevisionOpened" ng-required="true"
+						ng-disabled="true" />
+					</p>
+				</div>
+			</div>
+			
+			<!-- ********************************************** -->
+			<!-- TARJETA OPERACION -->
+			<!-- ********************************************** -->
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.tarjetaOperacion.$invalid }">
+				<label class="col-md-4 control-label" for="revision">Tarjeta Operacion: </label>
+				<div class="col-md-8">
+					<p class="input-group">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="tarjetaOperacionPicker">
+								<i class="glyphicon glyphicon-floppy-disk"></i>
+							</button>
+						</span>
+						<input id="tarjetaOperacion" type="text" name="tarjetaOperacion" class="form-control"
+						ng-model="item.tarjetaOperacion.originalFilename" ng-disabled="true" required>
+					</p>
+				</div>
+			</div>
+			
+			<div class="form-group row"
+				ng-class="{ 'alert alert-danger has-error' : formulario.vencimientoTarjetaOperacion.$invalid }">
+				<label class="col-md-4 control-label" for="soat">Vencimiento Tarjeta Operacion: </label>
+				<div class="col-md-8">
+					<p class="input-group">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="openCalendar($event, 'vencimientoTarjetaOperacionOpened')">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+						</span>
+						<input type="text" class="form-control" name="vencimientoTarjetaOperacion"
+						datepicker-popup="{{format}}" ng-model="item.vencimientoTarjetaOperacion"
+						is-open="vencimientoTarjetaOperacionOpened" ng-required="true"
+						ng-disabled="true" />
+					</p>
+				</div>
+			</div>
+
+			<div class="row alert alert-warning">Al hacer click en el boton
+				'Guardar' usted esta certificando que toda la informacion contenida
+				en el formulario de tarjeta de control es verdadera y correcta.
+				Falsificar informacion puede acarrear consecuencias juridicas.
+				Compruebe que toda la informaci&oacute;n es correcta y est&aacute;
+				completa.</div>
+
+
+			<button type="button" class="btn btn-info"
+				ng-disabled="formulario.$invalid" ng-click="saveItem()">Guardar</button>
+			<a href="#/ListVehiculo" class="btn btn-danger" role="button">Cancelar</a>
+
+		</form>
+	</div>
+</div>

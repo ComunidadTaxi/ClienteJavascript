@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<title>RedAmarilla - administrador</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<head>
+<link rel="stylesheet" href="assets/bootstrap.3.3.5.min.css">
+<link rel="stylesheet" href="assets/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/angucomplete-alt.css" />
+<link rel="stylesheet" href="assets/nomoretables.css" />
+<style>
+html {
+	height: 100%;
+	min-height:100%;
+}
+
+body {
+	/* min-height: 2000px;	
+	padding-bottom: 50px;
+	*/
+	padding-top: 70px;
+	background-image: url(images/administrador.jpg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-attachment: fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+</style>
+
+<script src="assets/angular.1.4.3.min.js"></script>
+<script src="assets/ui-bootstrap-tpls-0.13.2.min.js"></script>
+<script src="assets/jquery-2.1.4.min.js"></script>
+<script src="assets/bootstrap.3.3.5.min.js"></script>
+<script src="assets/angular-route.1.4.3.min.js"></script>
+<script src="assets/angular-cookies.1.4.3.min.js"></script>
+
+
+
+<script src="administrador/javascript/MainModule.js"></script>
+<script src="assets/MainRun.js"></script>
+<script src="assets/MainControllers.js"></script>
+<script src="assets/PathBuilder.js"></script>
+
+<script src="administrador/javascript/AgenteModule.js"></script>
+<script src="administrador/javascript/AgenteControllers.js"></script>
+<script src="administrador/javascript/AuditorModule.js"></script>
+<script src="administrador/javascript/AuditorControllers.js"></script>
+<script src="administrador/javascript/PropietarioModule.js"></script>
+<script src="administrador/javascript/PropietarioControllers.js"></script>
+<script src="administrador/javascript/SistemaModule.js"></script>
+<script src="administrador/javascript/SistemaControllers.js"></script>
+<script src="administrador/javascript/ServicioModule.js"></script>
+<script src="administrador/javascript/ServicioControllers.js"></script>
+
+
+<script src="https://apis.google.com/js/client.js?onload=GAPILoaded"></script>
+<!-- -->
+
+</head>
+<body ng-app="MainModule">
+
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-show="$root.session.storespace.module.user.loggedin">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand">
+					
+					RedAmarilla&nbsp;
+					<i class="fa fa-taxi"></i>&nbsp;
+					Administrador
+				</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							&nbsp;
+							{{$root.session.storespace.module.user.email}}
+							&nbsp;
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/EditSistema">
+									<span class="fa fa-cog" aria-hidden="true"></span>
+									&nbsp;
+									Sistema
+								</a>
+							</li>
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/ListPropietario">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									&nbsp;
+									Propietarios
+								</a>
+							</li>
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/ListAuditor"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+									&nbsp;
+									Auditores
+								</a>
+							</li>
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/ListAgente">
+									<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+									&nbsp;
+									Agentes
+								</a>
+							</li>
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/ListAgente">
+									<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+									&nbsp;
+									Servicios
+								</a>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/logout">
+									<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+									&nbsp;
+									Cerrar sesi&oacute;n
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!-- PORQUE NG-VIEW VACIO? -->
+	<div class="container" ng-view="">
+		<!--
+		<div class="well well-lg" ng-view=""></div>
+		-->
+	</div>
+		
+
+
+</body>
+</html>

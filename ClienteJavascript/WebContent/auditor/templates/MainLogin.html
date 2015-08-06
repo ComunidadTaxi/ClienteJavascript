@@ -1,0 +1,55 @@
+<div class="container-fluid" style="background-color: #FFB733">
+		<div class="col-sm-6 col-sm-offset-3">
+			
+			<form class="form-horizontal" name="formulario">
+				<h2 class="text-center form-signin-heading" style="color:#ffffff">RedAmarilla - Auditor</h2>
+				
+				<div class="form-group row" ng-class="{ 'alert alert-warning has-error' : formulario.email.$invalid }">
+					<label class="col-md-3 control-label" for="email" >Email: </label>
+					<div class="col-md-6">
+					<input
+					id="email"
+					type="text"
+					name="email"
+					class="form-control"
+					ng-model="item.email"
+					placeholder="Email"
+					required
+					autofocus>
+					</div>
+					<span class="col-md-3 help-block" ng-show="formulario.email.$error.required">
+						Obligatorio
+					</span>
+				</div>
+
+				<div class="form-group row" ng-class="{ 'alert alert-warning has-error' : formulario.password.$invalid }">
+					<label class="col-md-3 control-label" for="password">Password: </label>
+					<div class="col-md-6">
+					<input
+					id="password"
+					type="password"
+					name="password"
+					class="form-control"
+					ng-model="item.password"
+					placeholder="Clave"
+					required
+					autofocus>
+					</div>
+					<span class="col-md-3 help-block" ng-show="formulario.password.$error.required">
+						Obligatorio
+					</span>
+				</div>
+				
+				<div class="text-center">
+				<button type="button" class="btn btn-lg btn-danger" ng-disabled="formulario.$invalid" ng-click="onLogin()">
+					Iniciar sesion
+				</button>
+				</div>
+				
+				<div class="alert alert-warning text-center" ng-show="loginError">
+					{{loginError}}
+				</div>
+
+			</form>
+	</div>
+</div>
