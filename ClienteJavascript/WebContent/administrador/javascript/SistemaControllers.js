@@ -2,7 +2,7 @@ var SistemaModule = angular.module('SistemaModule');
 
 SistemaModule.controller('EditSistemaController', ['$scope', '$location', '$routeParams','$log', 'PathBuilder', function($scope, $location, $routeParams, $log, PathBuilder) {
 	
-	$scope.controllerInitialized = false;
+   $scope.controllerInitialized = false;
 
    $scope.$watch(function(){
    		return $scope.$root.GAPILoaded;

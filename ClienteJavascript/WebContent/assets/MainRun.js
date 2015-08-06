@@ -29,6 +29,7 @@ MainModule.run(['$rootScope', '$window', '$location', '$cookies', '$log', 'globa
 	$log.log("host: "+host);
 	if(host.indexOf('localhost')>-1){
 		//globals.apiRoot = 'http://'+host+'/_ah/api';
+		//globals.apiRoot = 'https://red-amarilla.appspot.com/_ah/api';
 		globals.apiRoot = 'https://red-amarilla.appspot.com/_ah/api';
 	}else{
 		globals.apiRoot = 'https://red-amarilla.appspot.com/_ah/api';

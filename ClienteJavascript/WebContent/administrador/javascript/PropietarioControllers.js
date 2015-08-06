@@ -50,6 +50,37 @@ PropietarioModule.controller('CreatePropietarioController', ['$scope', '$locatio
 
 PropietarioModule.controller('EditPropietarioController', ['$scope', '$location','$routeParams','$log', 'PathBuilder', function($scope, $location, $routeParams, $log, PathBuilder) {
 	
+	   $scope.controllerInitialized = false;
+
+	   $scope.$watch(function(){
+	   		return $scope.$root.GAPILoaded;
+	   }, function() {
+	   		if($scope.$root.GAPILoaded){
+	       	var restRequest = gapi.client.request({
+						'path' : PathBuilder.build('propietarioendpoint', 1) + 'getPropietario',
+						'method' : 'GET',
+						'params': {'id':$routeParams.id}
+					});
+			restRequest.then($scope.getCallback, $scope.getCallback);
+			$log.log('Invoked getPropietario...');
+		}
+	   });
+
+		$scope.getCallback = function(resp){
+			
+			if (!resp.error && !resp.result.error) {
+				$scope.item = resp.result;
+				$scope.controllerInitialized = true;
+				$scope.$apply();
+				$log.log('getPropietario success.');
+			} else {
+				$log.log('getPropietario error.');
+				$log.log(resp);
+			}
+		};
+
+		
+	/*	
 	$scope.getCallback = function(resp){
 		$log.log('getPropietario returned.');
 		if (!resp.error && !resp.result.error) {
@@ -76,7 +107,7 @@ PropietarioModule.controller('EditPropietarioController', ['$scope', '$location'
 		} else {
 			console.log(resp);
 		}
-	};
+	};*/
 
 	$scope.saveItem = function(){
 		var restRequest = gapi.client.request({
