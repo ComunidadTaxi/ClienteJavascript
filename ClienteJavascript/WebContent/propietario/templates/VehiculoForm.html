@@ -1,35 +1,264 @@
 <div class="container">
-	<div class="col-sm-6 col-sm-offset-3">
-		<form name="formulario">
+	<div class="col-sm-8  col-md-10 col-sm-offset-1">
+	<div class="panel panel-info">
+      <h2 class="text-center">Registrar vehiculo</h2>
+     
+      <div class="panel-body">
+        <form>
+         
 
-			<h2 class="text-center form-signin-heading">Registrar vehiculo</h2>
-			
-			
-			<div class="form-group row"
-				ng-class="{ 'alert alert-danger has-error' : formulario.placa.$invalid }">
-				<label class="col-md-4 control-label" for="soat">Placa: </label>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><b>Datos del Vehiculo</b></h3>
+  </div>
+  <div class="panel-body">
+   
+   <table border="0" ><tr><td width="70%">
+            <div class="row">
+               <div class="col-xs-6">
+                <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">PLACA: </label>
 				<div class="col-md-8">
-						<input id="placa" type="text" name="placa" class="form-control"
-						ng-model="item.placa" ng-pattern="/^[A-Z]{3}[0-9]{3}$/" required>
+					 <input type="text" class="form-control" placeholder="Placa"
+			        			ng-model="item.placa" ng-pattern="/^[A-Z]{3}[0-9]{3}$/" required>
 				</div>
-			</div>
-			
-			<div class="form-group row" ng-class="{ 'alert alert-danger has-error' : formulario.marca.$invalid }">
-				<label class="col-md-4 control-label" for="marca">Marca: </label>
+			    </div></div>
+			    <div class="col-xs-6">
+                <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">Clase: </label>
 				<div class="col-md-8">
-						<input id="placa" type="text" name="marca" class="form-control"
-						ng-model="item.marca" required>
+					<input type="text" class="form-control" placeholder="Clase">
 				</div>
+			    </div></div>
 			</div>
-			
-			<div class="form-group row"
-				ng-class="{ 'alert alert-danger has-error' : formulario.modelo.$invalid }">
-				<label class="col-md-4 control-label" for="modelo">Modelo: </label>
+            <div class="row"><div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">MARCA: </label>
 				<div class="col-md-8">
-						<input id="modelo" type="number" name="modelo" class="form-control"
-						ng-model="item.modelo" required>
+					  <input type="text" class="form-control" placeholder="Marca">
 				</div>
-			</div>
+			    </div></div>
+			    <div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">MODELO: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="Modelo">
+				</div>
+			    </div></div>
+             </div>
+              <div class="row"><div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">LINEA: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="Linea">
+				</div>
+			    </div> </div><div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">COLOR: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="Color">
+				</div>
+			    </div> </div>
+             </div>
+             <div class="row"><div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">Carroceria: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="carroceria">
+				</div>
+			    </div> </div><div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">Cilindraje: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="cilindraje">
+				</div>
+			    </div> </div>
+             </div>
+             <div class="row"><div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">Capacidad: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="capacidad">
+				</div>
+			    </div> </div><div class="col-xs-6">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">Ciudad: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="ciudad">
+				</div>
+			    </div> </div>
+             </div>
+
+            <br>
+            
+
+      </td>
+      <td width="30%" ><img src="images/taxi.jpg" margin-left="20px"  width="250px"  style="border:1px solid black; border-radius:10px;"  />
+      <div class="row">
+              <div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-8 control-label" for="modelo">Foto Vehiculo: </label>
+				<div class="col-md-4">
+					  <p class="input-group">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="revisionPicker">
+								<i class="glyphicon glyphicon-camera"></i>
+							</button>
+						</span>
+						
+					</p>
+				</div>
+			   </div> 
+			   </div>
+
+     </div>
+
+     </td>
+     </tr>
+     
+    </table>
+    <table border="0" style="width:100%;" ><tr>
+            <td td width="60%">
+            <div class="row"><div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">No. de Motor: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="No. de Motor">
+				</div>
+			    </div> </div><div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">No. Orden: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="No. Orden">
+				</div>
+			    </div> </div>
+			    <div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">No. Serie: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="No. Serie">
+				</div>
+			    </div> </div>
+             </div>
+             </td>
+             <td td width="40%">
+             
+               <div class="row"><div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">Servicio: </label>
+				<div class="col-md-8">
+					  <div class="controls">
+                           <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option>Seleccione....</option>
+                            <option>Publico</option>
+                            <option>Privado</option>
+                           </select>
+                         </div>
+				</div>
+			    </div> </div><div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">Combustible: </label>
+				<div class="col-md-8">
+					  <div class="controls">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option>Seleccione....</option>
+                            <option>Gasolina</option>
+                            <option>Gas</option>
+                            <option>Gasolina-Gas</option>
+                            <option>otro</option>
+                         </select>
+                        </div>
+				</div>
+			    </div> </div>
+			    <div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">  </label>
+				<div class="col-md-8">
+					   
+				</div>
+			    </div> </div>
+             </div>
+                
+             </td>
+           </tr>
+     </table>
+     <br>
+      <table border="0" ><tr><td width="60%">
+             
+              <div class="row">
+               <div class="col-xs-12">
+                <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">Empresa afiliadora: </label>
+				<div class="col-md-8">
+					<input type="date" class="form-control" placeholder="Empresa afiliadora">
+				</div>
+			    </div>
+			    </div>
+			   <div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">Fecha Afiliacion: </label>
+				<div class="col-md-8">
+					  <input type="date" class="form-control" placeholder="">
+				</div>
+			    </div></div>
+			    <div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">Fecha Desafiliacion: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="">
+				</div>
+			    </div></div></div>
+         
+            
+            
+      </td><td width="40%">
+      
+      
+      <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">Sede: </label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" placeholder="sede">
+				</div>
+			    </div></div>
+			     <div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="soat">No. Int: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder=" ">
+				</div>
+			    </div> </div><div class="col-xs-12">
+               <div class="form-group">
+				<label class="col-md-4 control-label" for="modelo">Estado: </label>
+				<div class="col-md-8">
+					  <input type="text" class="form-control" placeholder="Estado">
+				</div>
+			    </div> </div>
+			    </div>
+			    
+			    
+		</td>
+     </tr>
+   </table>
+  </div>
+</div>
+<br>
+
+   
+    
+</form>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><b>Archivos Vehiculo</b></h3>
+  </div>
+  <div class="panel-body">
+   <form name="formulario">
+
 			
 
 			<!-- ********************************************** -->
@@ -156,10 +385,31 @@
 				completa.</div>
 
 
-			<button type="button" class="btn btn-info"
-				ng-disabled="formulario.$invalid" ng-click="saveItem()">Guardar</button>
-			<a href="#/ListVehiculo" class="btn btn-danger" role="button">Cancelar</a>
 
 		</form>
+
+  </div>
+</div>
+
+
+
+
+
+          
+
+
+
+
+		
+	</div> 
+	<div class="panel-footer" style="overflow: hidden;" >
+	
+          <button style="float:left;" type="button" class="btn btn-primary btn-lg btn3d"  ng-disabled="formulario.$invalid" ng-click="saveItem()">Guardar</button>
+	      <a style="float:right;" href="#/ListVehiculo" class="btn btn-danger btn-lg btn3d" role="button">Cancelar</a>
+		
 	</div>
+
+
+</div>
+</div>
 </div>

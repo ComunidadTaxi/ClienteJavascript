@@ -1,10 +1,64 @@
 <div class="panel panel-info">
-<h2 class="text-center">
-	Agentes&nbsp;
-	<a type="button" class="btn btn-success" href="#/CreateAgente">
-		<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-	</a>
-</h2>
+  <h2 class="text-center">	Agentes&nbsp;</h2>
+	<div class="panel-heading">
+
+		<form class="form-inline">
+			<div class="row">
+			
+			<div class="col-sm-2 col-xs-3">
+			<a class="btn btn-primary" href="#/CreateAgente">Crear&nbsp;<i class="fa fa-user-plus"></i></a>
+			</div>
+			<div class="form-group col-sm-10 col-xs-9">
+				<div class="input-group">
+					<input type="text" class="form-control" id="exampleInputAmount" placeholder="Cedula...">
+					<div class="input-group-addon"><i class="fa fa-search"></i></div>
+				</div>
+			</div>
+			</div>
+		</form>
+	</div>
+	<div class="panel-body">
+
+<div class="col-lg-4 col-md-6" ng-repeat="item in items">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+    		<div class="row">
+        		<div class="col-xs-3">
+            		<i class="fa fa-user fa-5x"></i>
+				</div>
+            	<div class="col-xs-9 text-right">
+            		<div>
+            			<h4>{{item.cedula}}</h4>
+            		</div>
+                	<div class="text-right" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                		<small>{{item.nombre}}</small>
+                	</div>	
+				</div>
+			</div>
+		</div>
+			
+        <div class="panel-footer">
+        	<span class="pull-left"><small>{{item.email}}</small></span>
+        	<span class="pull-right">
+        		<a href="#/EditAgenet/{{item.id}}"><i class="fa fa-pencil"></i></a>
+        		&nbsp;
+        		<a href="#/DashboardAgente/{{item.id}}"><i class="fa fa-search"></i></a>
+        		&nbsp;
+        		<a href=""><i class="fa fa-user-times"></i></a>
+        	</span>
+            <div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+	</div>
+	<div class="panel-footer text-center">
+		<pagination style="margin: 0;" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
+	</div>
+</div>
+
+
+<!-- 
 
 
 <div id="no-more-tables">
@@ -42,4 +96,4 @@
 		<pagination style="margin: 0;" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
 </div>
 
-</div>
+</div> -->

@@ -6,7 +6,7 @@ VehiculoModule.config([ '$routeProvider' , function($routeProvider) {
 								templateUrl : 'propietario/templates/VehiculoList.html',
 								controller : 'ListVehiculoController'
 							});
-														$routeProvider.when('/CreateVehiculo', {
+							$routeProvider.when('/CreateVehiculo', {
 								templateUrl : 'propietario/templates/VehiculoForm.html',
 								controller : 'CreateVehiculoController'
 							});

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="assets/bootstrap.3.3.5.min.css">
 <link rel="stylesheet" href="assets/font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/angucomplete-alt.css" />
+<link rel="stylesheet" href="assets/3d_bottom.css" />
 <link rel="stylesheet" href="assets/nomoretables.css" />
 <style>
 html {
@@ -54,6 +55,8 @@ body {
 <script src="propietario/javascript/VehiculoControllers.js"></script>
 <script src="propietario/javascript/ConductorModule.js"></script>
 <script src="propietario/javascript/ConductorControllers.js"></script>
+<script src="propietario/javascript/PropietarioModule.js"></script>
+<script src="propietario/javascript/PropietarioControllers.js"></script>
 
 <script src="https://apis.google.com/js/client.js?onload=GAPILoaded"></script>
 <script src="https://www.google.com/jsapi?key=AIzaSyD1zVV_Eo-4uC0GBfKX16_nQZl2Aqt6WGs"></script>
@@ -82,17 +85,49 @@ body {
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li data-toggle="collapse" data-target="#navbar"><a href="#/ListVehiculo">Vehiculos</a></li>
-					<li data-toggle="collapse" data-target="#navbar"><a href="#/logout">Cerrar sesion</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							&nbsp;
+							{{$root.session.storespace.module.user.email}}
+							&nbsp;
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/ListVehiculo">
+									<span class="fa fa-cog" aria-hidden="true"></span>
+									&nbsp;
+									Vehiculos
+								</a>
+							</li>
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/EditPropietario/{{$root.session.storespace.module.user.id}}">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									&nbsp;
+									Mi Cuenta
+								</a>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li data-toggle="collapse" data-target="#navbar.in">
+								<a href="#/logout">
+									<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+									&nbsp;
+									Cerrar sesi&oacute;n
+								</a>
+							</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
+	
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
 			
 	<!-- PORQUE NG-VIEW VACIO? -->
 	<div class="container">
-		<div class="well well-lg" ng-view=""></div>
+		<div ng-view=""></div>
 	</div>
 		
 

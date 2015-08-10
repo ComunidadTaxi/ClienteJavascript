@@ -1,5 +1,8 @@
 var AgenteModule = angular.module('AgenteModule');
 
+AgenteModule.controller('DashboardAgenteController', [ '$scope', '$log', 'PathBuilder', function($scope, $log, PathBuilder) {
+}]);
+
 AgenteModule.controller('ListAgenteController', [ '$scope', '$log', 'PathBuilder', function($scope, $log, PathBuilder) {
 
 	$scope.callback = function(resp){
@@ -45,8 +48,39 @@ AgenteModule.controller('CreateAgenteController', ['$scope', '$location', '$log'
 
 }]);
 
-AgenteModule.controller('EditAgenteController', ['$scope', '$location', '$routeParams','$log', 'PathBuilder', function($scope, $location, $routeParams, $log, PathBuilder) {
+AgenteModule.controller('EditAgenteController', ['$scope', '$location','$routeParams','$log', 'PathBuilder', function($scope, $location, $routeParams, $log, PathBuilder) {
 	
+	   $scope.controllerInitialized = false;
+
+	   $scope.$watch(function(){
+	   		return $scope.$root.GAPILoaded;
+	   }, function() {
+	   		if($scope.$root.GAPILoaded){
+	       	var restRequest = gapi.client.request({
+						'path' : PathBuilder.build('agenteendpoint', 1) + 'getAgente',
+						'method' : 'GET',
+						'params': {'id':$routeParams.id}
+					});
+			restRequest.then($scope.getCallback, $scope.getCallback);
+			$log.log('Invoked getAgente...');
+		}
+	   });
+
+		$scope.getCallback = function(resp){
+			
+			if (!resp.error && !resp.result.error) {
+				$scope.item = resp.result;
+				$scope.controllerInitialized = true;
+				$scope.$apply();
+				$log.log('getAgente success.');
+			} else {
+				$log.log('getAgente error.');
+				$log.log(resp);
+			}
+		};
+
+		
+	/*	
 	$scope.getCallback = function(resp){
 		$log.log('getAgente returned.');
 		if (!resp.error && !resp.result.error) {
@@ -73,7 +107,7 @@ AgenteModule.controller('EditAgenteController', ['$scope', '$location', '$routeP
 		} else {
 			console.log(resp);
 		}
-	};
+	};*/
 
 	$scope.saveItem = function(){
 		var restRequest = gapi.client.request({
